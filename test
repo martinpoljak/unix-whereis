@@ -1,0 +1,7 @@
+#!/usr/bin/ruby
+# encoding: utf-8
+
+$:.push("./lib")
+require "unix/whereis"
+
+puts Whereis.available?(:jpegoptim).inspect
