@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Martin Kozák"]
-  s.date = %q{2011-02-18}
+  s.date = %q{2011-02-21}
   s.email = %q{martinkozak@martinkozak.net}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -18,12 +18,14 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.md",
     "Rakefile",
     "VERSION",
     "lib/unix/whereis.rb",
-    "test"
+    "test",
+    "unix-whereis.gemspec"
   ]
   s.homepage = %q{https://github.com/martinkozak/unix-whereis}
   s.licenses = ["MIT"]
