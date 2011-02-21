@@ -1,8 +1,8 @@
 Unix Whereis
 ============
 
-**Unix Whereis** provides Ruby interface to UNIX whereis command. 
-Some examples follows: (for details, see module documentation)
+**Unix Whereis** provides Ruby interface to UNIX `whereis` command. 
+Some examples follow: (for details, see module documentation)
 
     require "unix/whereis"
     
