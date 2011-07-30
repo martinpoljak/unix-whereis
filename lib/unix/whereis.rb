@@ -2,8 +2,8 @@
 # (c) 2011 Martin Kozák (martinkozak@martinkozak.net)
 
 require "command-builder"
-require "pipe-run"
-require "hash-utils/hash"
+require "hash-utils/hash"     # >= 0.9.0
+require "hash-utils/object"   # >= 0.18.0
 
 ##
 # UNIX +whereis+ command frontend.
@@ -73,18 +73,18 @@ class Whereis
         # Parses arguments
         cmd = CommandBuilder::new(:whereis)
  
-        if options.kind_of? Symbol
+        if options.symbol?
             __add_type(cmd, options)
-        elsif options.kind_of? Array
+        elsif options.array?
             options.each { |i| __add_type(cmd, i) }
-        elsif options.kind_of? Hash
+        elsif options.hash?
             options.each_pair { |n, v| __add_path(cmd, n, v) }
         end
         
         cmd << name.to_s
         
         # Parses output
-        output = Pipe.run(cmd.to_s)[(name.to_s.length + 2)..-1]
+        output = cmd.execute[(name.to_s.length + 2)..-1]
         return output.split(" ")
     end
     
@@ -177,7 +177,7 @@ class Whereis
     #
     
     def self.__get(name, type, options = nil)
-        if options.kind_of? Hash
+        if options.hash?
             arg = { }
             if options[:path]
                 arg[type] = options[:path]
@@ -187,7 +187,7 @@ class Whereis
             end
         elsif options == :unusual
             arg = [type, :unusual]
-        elsif options.kind_of? NilClass
+        elsif options.nil?
             arg = type
         else 
             raise Exception::new("Hash, Symbol or nil expected in options.")
